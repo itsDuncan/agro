@@ -20,7 +20,6 @@ class AgroSignupForm(SignupForm):
 		for fieldname, field in self.fields.items():
 			field.widget.attrs.update({
 				'class': 'form-control',
-				'placeholder': '',
 			})
 
 	def save(self, request):
@@ -35,7 +34,6 @@ class AgroResetPasswordForm(ResetPasswordForm):
 		for fieldname, field in self.fields.items():
 			field.widget.attrs.update({
 				'class': 'form-control',
-				
 			})
 
 	def save(self, request):
@@ -50,7 +48,6 @@ class AgroSetPasswordForm(SetPasswordForm):
 		for fieldname, field in self.fields.items():
 			field.widget.attrs.update({
 				'class': 'form-control',
-				'placeholder': '',
 			})
 
 	def save(self):
@@ -63,7 +60,6 @@ class AgroResetPasswordKeyForm(ResetPasswordKeyForm):
 		for fieldname, field in self.fields.items():
 			field.widget.attrs.update({
 				'class': 'form-control',
-				'placeholder': '',
 			})
 
 	def save(self):
@@ -76,5 +72,4 @@ class AgroChangePasswordForm(ChangePasswordForm):
 		for fieldname, field in self.fields.items():
 			field.widget.attrs.update({
 				'class': 'form-control',
-				'placeholder': '',
 			})

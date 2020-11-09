@@ -30,7 +30,6 @@ ALLOWED_HOSTS = ['*']
 
 SITE_ID = 1
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'home',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +120,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+
 STATIC_URL = '/static/'
 STATIC_ROOT = Path.home().joinpath(BASE_DIR, 'staticfiles/')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -143,3 +146,16 @@ ACCOUNT_FORMS = {
     'reset_password': 'home.forms.AgroResetPasswordForm',
     'reset_password_from_key': 'home.forms.AgroResetPasswordKeyForm',
 }
+
+ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = LOGIN_URL
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = LOGIN_REDIRECT_URL
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Smart Farmer: '
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+ACCOUNT_USERNAME_MIN_LENGTH = 3
