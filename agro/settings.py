@@ -26,7 +26,9 @@ SECRET_KEY = 'b-sp2g^vmjy7cpir7y+i9z-&rfj7lgxn2bw3gcf=v#gg^bq=z*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+SITE_ID = 1
 
 
 # Application definition
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'allauth',
     'home',
 ]
@@ -131,3 +134,12 @@ MEDIA_ROOT = Path.home().joinpath(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+ACCOUNT_FORMS = {
+    'login': 'home.forms.AgroLoginForm',
+    'signup': 'home.forms.AgroSignupForm',
+    'change_password': 'home.forms.AgroChangePasswordForm',
+    'set_password': 'home.forms.AgroSetPasswordForm',
+    'reset_password': 'home.forms.AgroResetPasswordForm',
+    'reset_password_from_key': 'home.forms.AgroResetPasswordKeyForm',
+}
