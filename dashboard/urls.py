@@ -5,4 +5,5 @@ app_name = 'dashboard'
 
 urlpatterns = [
 	re_path(r'^$', views.dashboard, name='dashboard'),
+	re_path(r'^offer-advice/$', views.create_advice, name='offer-advice'),
 ]

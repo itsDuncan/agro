@@ -19,8 +19,26 @@
 								<div class="text-center">
 									<h1 class="h4 text-gray-900 mb-4">Register</h1>
 								</div>
-								<form class="user" method="POST" action="{% url 'account_login' %}">
+								<form class="user" method="POST" action="{% url 'account_signup' %}">
+
 									{% csrf_token %}
+
+									{% if form.errors %}
+										{% for error in form.non_field_errors %}
+										<div class="alert alert-danger alert-dismissable fade show" role="alert">
+											{{ error|escape }}
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">&times;</button>
+										</div>
+										{% endfor %}
+										{% for field in form %}
+											{% for error in field.errors %}
+											<div class="alert alert-danger alert-dismissable fade show" role="alert">
+												{{ error|escape }}
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">&times;</button>
+											</div>
+											{% endfor %}
+										{% endfor %}
+									{% endif %}
 									
 									{% for field in form %}
 										<div class="form-group">
@@ -28,7 +46,7 @@
 										</div>
 									{% endfor %}
 									
-									<input type="submit" name="send" value="Login" class="btn btn-primary btn-user btn-block">
+									<input type="submit" name="send" value="Register" class="btn btn-primary btn-user btn-block">
 									
 								</form>
 								<hr>
@@ -40,7 +58,7 @@
 								</div>
 
 								<div class="text-center pt-3">
-									<button class="btn btn-sm btn-secondary">Back to homepage</button>
+									<a href="{% url 'home:landing-page' %}" class="btn btn-sm btn-secondary">Back to homepage</a>
 								</div>
 							</div>
 						</div>

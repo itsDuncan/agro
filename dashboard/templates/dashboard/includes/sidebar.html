@@ -1,0 +1,29 @@
+{% load static %}
+
+<nav class="sidebar-nav">
+	<ul id="sidebarnav">
+		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+			href="#" aria-expanded="false"><i class="fa fa-columns"
+			aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
+		</li>
+		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+			href="#" aria-expanded="false">
+			<i class="fa fa-user" aria-hidden="true"></i><span class="hide-menu">Profile</span></a>
+		</li>
+
+		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+			href="#" aria-expanded="false"><i class="fa fa-font"
+			aria-hidden="true"></i><span class="hide-menu">Farmers</span></a>
+		</li>
+
+		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+			href="{% url 'services:create-service' %}" aria-expanded="false"><i class="fa fa-info-circle"
+			aria-hidden="true"></i><span class="hide-menu">Create Farmer Service</span></a>
+		</li>
+
+		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+			href="{% url 'dashboard:offer-advice' %}" aria-expanded="false"><i class="fa fa-info-circle"
+			aria-hidden="true"></i><span class="hide-menu">Offer Advice</span></a>
+		</li>
+	</ul>
+</nav>

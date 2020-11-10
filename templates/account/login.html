@@ -1,9 +1,5 @@
 {% extends 'base/base.html' %}
 {% load static %}
-
-{% block extra_css %}
-	
-{% endblock extra_css %}
 	
 {% block content %}
 
@@ -25,6 +21,23 @@
 								</div>
 								<form class="user" method="POST" action="{% url 'account_login' %}">
 									{% csrf_token %}
+									{% if form.errors %}
+										{% for error in form.non_field_errors %}
+										<div class="alert alert-danger alert-dismissable fade show" role="alert">
+											{{ error|escape }}
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">&times;</button>
+										</div>
+										{% endfor %}
+										{% for field in form %}
+											{% for error in field.errors %}
+											<div class="alert alert-danger alert-dismissable fade show" role="alert">
+												{{ error|escape }}
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">&times;</button>
+											</div>
+											{% endfor %}
+										{% endfor %}
+									{% endif %}
+
 									<div class="form-group">
 										{{ form.login }}
 									</div>
@@ -51,7 +64,7 @@
 								</div>
 
 								<div class="text-center pt-3">
-									<button class="btn btn-sm btn-secondary">Back to homepage</button>
+									<a href="{% url 'home:landing-page' %}" class="btn btn-sm btn-secondary">Back to homepage</a>
 								</div>
 							</div>
 						</div>
