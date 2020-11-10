@@ -78,11 +78,11 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="white-box">
-											<h3 class="box-title">A Word from the wise</h3>
+											<h3 class="box-title">Services we have in store for you</h3>
 											
 											<ul class="list-group">
-												{% for advice in advice_list  %}
-													<li class="list-group-item"> <strong>{{ advice.specialization }}</strong> - {{ advice.content }}</li>
+												{% for service in services  %}
+													<li class="list-group-item"> <strong>{{ service.name }}</strong> - {{ service.description }}</li>
 												{% endfor %}
 											</ul>
 

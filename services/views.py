@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import CreateServiceForm
+from .models import Service
 
 def create_service(request):
 	template_name = 'dashboard/create_service.html'
