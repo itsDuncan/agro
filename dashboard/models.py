@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 class Advice(models.Model):
 	slug = models.SlugField(unique=True, blank=True, null=True)

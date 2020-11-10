@@ -3,7 +3,12 @@ from .forms import CreateServiceForm
 
 def create_service(request):
 	template_name = 'dashboard/create_service.html'
-	form = CreateServiceForm(request.POST or None, label_suffix='')
+	if request.method == 'POST':
+		form = CreateServiceForm(request.POST or None, label_suffix='')
+		if form.is_valid():
+			form.save()
+	else:
+		form = CreateServiceForm(label_suffix='')
 
 	context = {
 		'form': form,

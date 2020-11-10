@@ -61,7 +61,7 @@
 								<div class="page-breadcrumb bg-white">
 									<div class="row align-items-center">
 										<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-											<h4 class="page-title text-uppercase font-medium font-14">Welcome Smart Farmer</h4>
+											<h4 class="page-title text-uppercase font-medium font-14">Farmers</h4>
 										</div>
 										<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 											<div class="d-md-flex">
@@ -78,38 +78,14 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="white-box">
-											<h3 class="box-title">Offer some wise words</h3>
-											<form method="POST" action="">
-
-												{% csrf_token %}
-												{% if form.errors %}
-													{% for error in form.non_field_errors %}
-													<div class="alert alert-danger alert-dismissable fade show" role="alert">
-														{{ error|escape }}
-														<button type="button" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">&times;</button>
-													</div>
-													{% endfor %}
-
-													{% for field in form %}
-														{% for error in field.errors %}
-														<div class="alert alert-danger alert-dismissable fade show" role="alert">
-															{{ error|escape }}
-															<button type="button" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">&times;</button>
-														</div>
-														{% endfor %}
-													{% endfor %}
-
-												{% endif %}
-												
-												{% for field in form %}
-													<div class="form-group">
-														{{ field }}
-													</div>
+											<h3 class="box-title">A Word from the wise</h3>
+											
+											<ul class="list-group">
+												{% for advice in advice_list  %}
+													<li class="list-group-item">{{ advice.content }}</li>
 												{% endfor %}
+											</ul>
 
-												<button type="submit" class="form-control btn btn-primary mt-3">Give Advice</button>
-
-											</form>
 										</div>
 									</div>
 								</div>

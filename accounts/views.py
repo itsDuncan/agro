@@ -16,7 +16,7 @@ def profile_detail(request, username):
 	template_name = 'accounts/profile_detail.html'
 	profile = get_object_or_404(User, username=request.user.username)
 
-	form = ProfileUpdateForm(request.POST or None, request.FILES or None, instance=profile)
+	form = ProfileUpdateForm(request.POST or None, request.FILES or None, instance=profile, label_suffix='')
 
 	if form.is_valid():
 		form.save()

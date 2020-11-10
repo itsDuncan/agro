@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import AdviceForm
+from .models import Advice
 
 def dashboard(request):
 	template_name = 'dashboard/dashboard.html'
@@ -11,9 +12,24 @@ def dashboard(request):
 
 def create_advice(request):
 	template_name = 'dashboard/create_advice.html'
-	form = AdviceForm(request.POST or None, label_suffix='')
+
+	if request.method == 'POST':
+		form = AdviceForm(request.POST or None, label_suffix='')
+		if form.is_valid():
+			form.save()
+	else:
+		form = AdviceForm(label_suffix='')
 	
 	context = {
 		'form': form,
+	}
+	return render(request, template_name, context)
+
+def advice_list(request):
+	template_name = 'dashboard/advice_list.html'
+	advice_list = Advice.objects.all()
+
+	context = {
+		'advice_list': advice_list,
 	}
 	return render(request, template_name, context)
