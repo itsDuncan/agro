@@ -24,6 +24,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('dashboard/services', include('services.urls')),
+    path('dashboard/accounts', include('accounts.urls')),
 ]
 
 if settings.DEBUG:
